@@ -1,0 +1,36 @@
+<div class="main">
+    <div class="header">
+        <div class="navbar">
+            <img src="assets/images/logo.png" class="logo" alt="logo">
+            <div class="brand">
+                <h1>Spotfinder</h1>
+            </div>
+            <div class="home">
+                <h1>Home</h1>
+            </div>
+        </div>
+        <div class="inputSearch">
+            <input [(ngModel)]="searchText" (ngModelChange)="nextValue()" >
+        </div>
+
+    </div>
+
+    <div class="content"  (click)="setExpanded(false)">
+        @if (spotifySearchResponse) {
+            <h1 class="albums">
+                albums
+            </h1>     
+            @for (album of spotifySearchResponse.albums.items; track $index) {
+                <p> 
+                    <img src="{{album.images[0].url}}" alt="album cover" class="albumCover">
+                    <span class="albumName">{{album.name}}</span>
+                    <span class="albumArtist">{{album.artists[0].name}}</span>
+                </p>
+            }   
+        }
+    </div>
+    <div class="player" (click)="setExpanded(false)">
+        
+    </div>
+
+</div>

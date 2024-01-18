@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+$primary-color: #1fd35e;
+$secondary-light: 	#212121;
+$secondary-color: #121212;
+$accent-color: #535353;
+$accent-light: #b3b3b3;
+
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url(./assets/fonts/gotham/Gotham-Bold.otf);
+}
+
+@font-face {
+    font-family: 'Gotham-Light';
+    src: url(./assets/fonts/gotham/Gotham-Light.otf);
+}
+
+@font-face {
+    font-family: 'Gotham-Medium';
+    src: url(./assets/fonts/gotham/GothamMedium.ttf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto:wght@300&family=Work+Sans:ital@1&display=swap');
