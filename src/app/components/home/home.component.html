@@ -16,17 +16,48 @@
     </div>
 
     <div class="content"  (click)="setExpanded(false)">
-        @if (spotifySearchResponse) {
-            <h1 class="albums">
-                albums
-            </h1>     
-            @for (album of spotifySearchResponse.albums.items; track $index) {
-                <p> 
-                    <img src="{{album.images[0].url}}" alt="album cover" class="albumCover">
-                    <span class="albumName">{{album.name}}</span>
-                    <span class="albumArtist">{{album.artists[0].name}}</span>
-                </p>
-            }   
+        @if (spotifySearchResponse && spotifySearchResponse.artists.items.length > 0) {
+                <div class="author">
+                    <div class="author-img"> 
+                        <img src="{{spotifySearchResponse.artists.items.at(0)?.images?.at(0)?.url}}" class="artist-img" alt="album cover">
+                    </div>
+                    <h1 class="artist-name">{{spotifySearchResponse.albums.items.at(0)?.artists?.at(0)?.name}}</h1>
+                    <h2 class="artist-genre">{{spotifySearchResponse.artists.items.at(0)?.genres?.at(0)}}</h2>
+                    <h2 class="artist-genre">{{spotifySearchResponse.artists.items.at(0)?.genres?.at(1)}}</h2>
+                    <h2 class="artist-genre"> Followers: {{spotifySearchResponse.artists.items.at(0)?.followers?.total}} </h2>
+                </div>
+                <div class="search-info">
+                    <div class="albums">
+                        <h2>Albums</h2>
+                        <div class="album-handler">
+                            @for(album of spotifySearchResponse.albums.items; track album.id){
+                                <div class="album">
+                                    <img src="{{album.images.at(0)?.url}}" class="album-img" alt="album cover">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="albums">
+                        <h2>Tracks</h2>
+                        <div class="album-handler">
+                            @for(track of spotifySearchResponse.tracks.items; track track.id){
+                                <div class="album">
+                                    <img src="{{track.album.images.at(0)?.url}}" class="album-img" alt="album cover">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                        <div class="albums">
+                            <h2>Playlists</h2>
+                            <div class="album-handler">
+                                @for(track of spotifySearchResponse.playlists.items; track track.id){
+                                    <div class="album">
+                                        <img src="{{track.images.at(0)?.url}}" class="album-img" alt="album cover">
+                                    </div>
+                                }
+                            </div>
+                        </div>                        
+                </div>
         }
     </div>
     <div class="player" (click)="setExpanded(false)">

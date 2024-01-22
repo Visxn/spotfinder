@@ -25,7 +25,7 @@ export class HomeComponent {
   isSearchInputExpanded = false;
 
   constructor(private spotifyService: SpotifyService) {
-    this.spotifyService.searchText.pipe(debounceTime(1000)).subscribe((data: any) => {
+    this.spotifyService.searchText.pipe(debounceTime(200)).subscribe((data: any) => {
       if (this.searchText)
         this.searchArtist();
     });
